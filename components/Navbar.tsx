@@ -29,7 +29,7 @@ export const Navbar = () => {
 
               Menu open: "hidden", Menu closed: "block" */}
               <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
                 {/* Icon when menu is open.
 
@@ -37,7 +37,7 @@ export const Navbar = () => {
 
                 Menu open: "block", Menu closed: "hidden" */}
               <svg className="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
@@ -68,11 +68,11 @@ export const Navbar = () => {
       </div>
 
       {/* mobile menu, show/hide base on menu state */}
-      {!mobileButton ? (
+      {mobileButton ? (
         <div className="sm:hidden" id="mobile-menu">
           <div className="px-2 pt-2 pb-3 space-y-1">
             <Link href="/">
-              <a className={router.pathname === "/" ? "active-link block":"nav-link block"}aria-current="page">Dashboard</a>
+              <a className={router.pathname === "/" ? "active-link block":"nav-link block"}aria-current="page">Home</a>
             </Link>
             <Link href="/about">
               <a className={router.pathname === "/about" ? "active-link block":"nav-link block"}>About</a>
