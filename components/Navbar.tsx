@@ -1,10 +1,12 @@
 // import Image from "next/image";
+import { ShoppingBagIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
+  const quantity = useSelector((state:any)=> state.cart.quantity)
   const [mobileButton, setMobileButton] = useState<boolean>(false)
   function handleMobileToggle() {
     if(!mobileButton) {
@@ -17,7 +19,7 @@ export const Navbar = () => {
   return(
     <nav className="bg-orange-500">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-        <div className="relative flex items-center justify-between h-14">
+        <div className="relative flex items-center h-14">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* mobile menu button */}
             <button type="button" className="inline-flex items-center justify-center p-2 rounded-md text-orange-200 hover:text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" onClick={()=>handleMobileToggle()}>
@@ -41,9 +43,17 @@ export const Navbar = () => {
               </svg>
             </button>
           </div>
-          <div className="flex-1 flex items-center justify-center sm:items-stretch sm:jusitfy-start">
+          <div className="absolute right-0 items-center mr-3">
+            <Link href="/cart">
+              <a href="#" className="">
+                <ShoppingBagIcon className="h-5 w-5 text-orange-200"/>
+                <span className="absolute top-0 left-3 px-1 bg-white rounded-3xl text-xs text-gray-700">{quantity}</span>
+              </a>
+            </Link>
+          </div>
+          <div className="flex-1 flex items-center justify-start sm:items-stretch sm:jusitfy-start">
             <div className="flex-shrink-0 flex items-center">
-              <div className="block lg:hidden">
+              <div className="block lg:hidden ml-10">
                 <img className="h-8 w-auto" src="https://www.svgrepo.com/show/91025/pizza.svg" alt="Workflow"/>
               </div>
               <div className="hidden lg:block">
@@ -61,8 +71,10 @@ export const Navbar = () => {
                 <Link href="/about">
                   <a href="#" className={router.pathname === "/about" ? "active-link":"nav-link"}>About</a>
                 </Link>
+                
               </div>
             </div>
+            
           </div>
         </div>
       </div>
